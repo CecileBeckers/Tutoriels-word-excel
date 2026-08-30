@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Site de tutoriels bureautiques pour les élèves">
+  <title>Tutoriels bureautiques</title>
+
+  <style>
+    :root {
+      --primary: #2563eb;
+      --primary-dark: #1d4ed8;
+      --secondary: #eff6ff;
+      --background: #f8fafc;
+      --surface: #ffffff;
+      --text: #1e293b;
+      --muted: #64748b;
+      --border: #dbe3ef;
+      --success: #166534;
+      --shadow: 0 8px 24px rgba(15, 23, 42, 0.08);
+      --radius: 14px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--text);
+      background: var(--background);
+      line-height: 1.5;
+    }
+
+    a {
+      color: var(--primary);
+    }
+
+    .container {
+      width: min(1180px, calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    header {
+      padding: 56px 0 42px;
+      color: #ffffff;
+      background: linear-gradient(135deg, #1d4ed8, #2563eb 55%, #60a5fa);
+    }
+
+    header h1 {
+      margin: 0 0 12px;
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      line-height: 1.1;
+    }
+
+    header p {
+      max-width: 720px;
+      margin: 0;
+      font-size: 1.1rem;
+      opacity: 0.95;
+    }
+
+    .controls {
+      display: grid;
+      gap: 18px;
+      margin: 30px 0;
+      padding: 22px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .search-label {
+      font-weight: 700;
+    }
+
+    #search {
+      width: 100%;
+      margin-top: 8px;
+      padding: 14px 16px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      font: inherit;
+      color: var(--text);
+      background: #ffffff;
+    }
+
+    #search:focus {
+      outline: 3px solid rgba(37, 99, 235, 0.2);
+      border-color: var(--primary);
+    }
+
+    .filters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .filter-button {
+      padding: 10px 15px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      color: var(--text);
+      background: #ffffff;
+      font: inherit;
+      font-weight: 700;
+      cursor: pointer;
+      transition: 0.2s ease;
+    }
+
+    .filter-button:hover,
+    .filter-button:focus {
+      border-color: var(--primary);
+      color: var(--primary-dark);
+    }
+
+    .filter-button.active {
+      border-color: var(--primary);
+      color: #ffffff;
+      background: var(--primary);
+    }
+
+    .summary {
+      margin: 0;
+      color: var(--muted);
+      font-weight: 700;
+    }
+
+    .tutorial-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      padding-bottom: 48px;
+    }
+
+    .tutorial-card {
+      display: flex;
+      flex-direction: column;
+      min-height: 300px;
+      padding: 22px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .card-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 15px;
+    }
+
+    .software {
+      display: inline-block;
+      padding: 5px 10px;
+      border-radius: 999px;
+      color: var(--primary-dark);
+      background: var(--secondary);
+      font-size: 0.85rem;
+      font-weight: 700;
+    }
+
+    .level {
+      color: var(--muted);
+      font-size: 0.85rem;
+      font-weight: 700;
+    }
+
+    .tutorial-card h2 {
+      margin: 0 0 12px;
+      font-size: 1.25rem;
+      line-height: 1.25;
+    }
+
+    .tutorial-card p {
+      margin: 0 0 16px;
+      color: var(--muted);
+    }
+
+    .keywords {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 18px;
+    }
+
+    .keyword {
+      padding: 4px 8px;
+      border-radius: 6px;
+      color: #475569;
+      background: #f1f5f9;
+      font-size: 0.78rem;
+    }
+
+    .card-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-top: auto;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+
+    .metadata {
+      color: var(--muted);
+      font-size: 0.85rem;
+    }
+
+    .tutorial-link {
+      display: inline-block;
+      padding: 9px 12px;
+      border-radius: 8px;
+      color: #ffffff;
+      background: var(--primary);
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .tutorial-link:hover,
+    .tutorial-link:focus {
+      background: var(--primary-dark);
+    }
+
+    .empty {
+      grid-column: 1 / -1;
+      padding: 40px 20px;
+      border: 1px dashed var(--border);
+      border-radius: var(--radius);
+      color: var(--muted);
+      text-align: center;
+      background: var(--surface);
+    }
+
+    footer {
+      padding: 24px 0 36px;
+      color: var(--muted);
+      text-align: center;
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 600px) {
+      .container {
+        width: min(100% - 22px, 1180px);
+      }
+
+      header {
+        padding: 40px 0 32px;
+      }
+
+      .controls {
+        padding: 16px;
+      }
+
+      .card-footer {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .tutorial-link {
+        width: 100%;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="container">
+      <h1>Tutoriels bureautiques</h1>
+      <p>
+        Retrouvez rapidement des ressources pour progresser dans l'utilisation
+        des outils bureautiques.
+      </p>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="controls" aria-label="Recherche et filtres">
+      <label class="search-label" for="search">
+        Rechercher un tutoriel
+        <input
+          id="search"
+          type="search"
+          placeholder="Exemple : tableau, image, PDF..."
+          autocomplete="off"
+        >
+      </label>
+
+      <div class="filters" aria-label="Filtres">
+        <button class="filter-button active" type="button" data-filter="all">
+          Tous
+        </button>
+        <button class="filter-button" type="button" data-filter="Word">
+          Word
+        </button>
+        <button class="filter-button" type="button" data-filter="Excel">
+          Excel
+        </button>
+        <button class="filter-button" type="button" data-filter="Débutant">
+          Débutant
+        </button>
+        <button class="filter-button" type="button" data-filter="Intermédiaire">
+          Intermédiaire
+        </button>
+        <button class="filter-button" type="button" data-filter="Avancé">
+          Avancé
+        </button>
+      </div>
+
+      <p id="summary" class="summary" aria-live="polite"></p>
+    </section>
+
+    <section
+      id="tutorial-grid"
+      class="tutorial-grid"
+      aria-live="polite"
+      aria-label="Liste des tutoriels"
+    ></section>
+  </main>
+
+  <footer>
+    <div class="container">
+      Site de tutoriels en lecture seule.
+    </div>
+  </footer>
+
+  <script>
+    const tutorials = [
+      {
+        id: 1,
+        title: "Sauts de page et sauts de section dans Word",
+        software: "Word",
+        keywords: ["saut de page", "saut de section", "mise en page", "pagination", "séparation de document"],
+        link: "https://exemple.com/tutoriel-word-01",
+        duration: "À compléter",
+        description: "Insérez des sauts de page et de section afin d'organiser la structure et la mise en page d'un document.",
+        level: "Intermédiaire",
+        date: "2026-08-30"
+      },
+      {
+        id: 2,
+        title: "Insérer une page de garde dans Word",
+        software: "Word",
+        keywords: ["page de garde", "couverture", "première page", "modèle", "présentation", "document"],
+        link: "https://exemple.com/tutoriel-word-02",
+        duration: "À compléter",
+        description: "Ajoutez une page de garde professionnelle à un document Word à partir d'un modèle ou d'une mise en page personnalisée.",
+        level: "Débutant",
+        date: "2026-08-30"
+      },
+      {
+        id: 3,
+        title: "Insérer et mettre en forme un tableau dans Word",
+        software: "Word",
+        keywords: ["tableau", "lignes", "colonnes", "cellules", "insertion", "bordures", "mise en forme"],
+        link: "https://exemple.com/tutoriel-word-03",
+        duration: "À compléter",
+        description: "Insérez un tableau dans Word et modifiez sa structure, ses cellules et sa présentation.",
+        level: "Débutant",
+        date: "2026-08-30"
+      },
+      {
+        id: 4,
+        title: "Insérer et modifier une icône dans Word",
+        software: "Word",
+        keywords: ["icône", "pictogramme", "insertion", "personnalisation", "couleur", "taille", "objets"],
+        link: "https://exemple.com/tutoriel-word-04",
+        duration: "À compléter",
+        description: "Insérez une icône dans Word et personnalisez son apparence, sa taille et ses couleurs.",
+        level: "Intermédiaire",
+        date: "2026-08-30"
+      },
+      {
+        id: 5,
+        title: "Insérer des colonnes dans Word",
+        software: "Word",
+        keywords: ["colonnes", "mise en page", "texte en colonnes", "journal", "espacement", "section"],
+        link: "https://exemple.com/tutoriel-word-05",
+        duration: "À compléter",
+        description: "Organisez le texte en plusieurs colonnes et ajustez leur disposition dans un document Word.",
+        level: "Intermédiaire",
+        date: "2026-08-30"
+      },
+      {
+        id: 6,
+        title: "Ajouter des bordures et des trames dans Word",
+        software: "Word",
+        keywords: ["bordures", "trame de fond", "paragraphe", "tableau", "encadrement", "couleur", "mise en forme"],
+        link: "https://exemple.com/tutoriel-word-06",
+        duration: "À compléter",
+        description: "Ajoutez des bordures et des trames pour mettre en valeur des paragraphes ou des tableaux.",
+        level: "Intermédiaire",
+        date: "2026-08-30"
+      },
+      {
+        id: 7,
+        title: "Utiliser les styles de titre dans Word",
+        software: "Word",
+        keywords: ["styles", "titre", "titres hiérarchisés", "niveau de titre", "navigation", "table des matières"],
+        link: "https://exemple.com/tutoriel-word-07",
+        duration: "À compléter",
+        description: "Appliquez des styles de titre pour structurer un document et faciliter sa navigation.",
+        level: "Intermédiaire",
+        date: "2026-08-30"
+      },
+      {
+        id: 8,
+        title: "Insérer un pied de page avec plusieurs informations",
+        software: "Word",
+        keywords: ["pied de page", "informations", "numéro de page", "texte", "date", "en-tête", "mise en page"],
+        link: "https://exemple.com/tutoriel-word-08",
+        duration: "À compléter",
+        description: "Créez un pied de page contenant plusieurs informations, comme un texte, une date et un numéro de page.",
+        level: "Intermédiaire",
+        date: "2026-08-30"
+      },
+      {
+        id: 9,
+        title: "Insérer une numérotation simple des pages dans Word",
+        software: "Word",
+        keywords: ["numérotation des pages", "numéro de page", "pagination", "pied de page", "en-tête", "document"],
+        link: "https://exemple.com/tutoriel-word-09",
+        duration: "À compléter",
+        description: "Ajoutez une numérotation simple aux pages d'un document Word et choisissez son emplacement.",
+        level: "Débutant",
+        date: "2026-08-30"
+      },
+      {
+        id: 10,
+        title: "Créer des listes à puces et des listes numérotées dans Word",
+        software: "Word",
+        keywords: ["liste à puces", "liste numérotée", "numérotation", "paragraphes", "hiérarchie", "présentation"],
+        link: "https://exemple.com/tutoriel-word-10",
+        duration: "À compléter",
+        description: "Créez et personnalisez des listes à puces ou numérotées pour organiser clairement vos informations.",
+        level: "Débutant",
+        date: "2026-08-30"
+      },
+      {
+        id: 11,
+        title: "Utiliser la coupure de mots et aligner le texte dans Word",
+        software: "Word",
+        keywords: ["coupure de mots", "césure", "alignement", "justification", "paragraphe", "texte", "mise en forme"],
+        link: "https://exemple.com/tutoriel-word-11",
+        duration: "À compléter",
+        description: "Activez la coupure de mots et choisissez l'alignement adapté à la présentation de votre texte.",
+        level: "Débutant",
+        date: "2026-08-30"
+      },
+      {
+        id: 12,
+        title: "Insérer et mettre en forme une image dans Word",
+        software: "Word",
+        keywords: ["image", "insertion", "illustration", "habillage du texte", "positionnement", "redimensionnement"],
+        link: "https://exemple.com/tutoriel-word-12",
+        duration: "À compléter",
+        description: "Insérez une image dans Word et ajustez sa taille, sa position et son habillage avec le texte.",
+        level: "Débutant",
+        date: "2026-08-30"
+      },
+      {
+        id: 13,
+        title: "Modifier les marges dans Word",
+        software: "Word",
+        keywords: ["marges", "mise en page", "bordures de page", "orientation", "espace", "document"],
+        link: "https://exemple.com/tutoriel-word-13",
+        duration: "À compléter",
+        description: "Modifiez les marges d'un document pour adapter l'espace disponible autour du texte.",
+        level: "Débutant",
+        date: "2026-08-30"
+      }
+    ];
+
+    const grid = document.getElementById("tutorial-grid");
+    const searchInput = document.getElementById("search");
+    const summary = document.getElementById("summary");
+    const filterButtons = document.querySelectorAll(".filter-button");
+
+    let activeFilter = "all";
+
+    function normalize(value) {
+      return value
+        .toLocaleLowerCase("fr")
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "");
+    }
+
+    function formatDate(dateString) {
+      const date = new Date(`${dateString}T00:00:00`);
+
+      if (Number.isNaN(date.getTime())) {
+        return dateString;
+      }
+
+      return new Intl.DateTimeFormat("fr-FR", {
+        day: "2-digit",
+        month: "2-digit",
+        year: "numeric"
+      }).format(date);
+    }
+
+    function matchesSearch(tutorial, searchTerm) {
+      const searchableContent = [
+        tutorial.title,
+        tutorial.software,
+        tutorial.description,
+        tutorial.level,
+        tutorial.keywords.join(" ")
+      ].join(" ");
+
+      return normalize(searchableContent).includes(normalize(searchTerm));
+    }
+
+    function matchesFilter(tutorial) {
+      if (activeFilter === "all") {
+        return true;
+      }
+
+      return tutorial.software === activeFilter || tutorial.level === activeFilter;
+    }
+
+    function createCard(tutorial) {
+      const card = document.createElement("article");
+      card.className = "tutorial-card";
+
+      const top = document.createElement("div");
+      top.className = "card-top";
+
+      const software = document.createElement("span");
+      software.className = "software";
+      software.textContent = tutorial.software;
+
+      const level = document.createElement("span");
+      level.className = "level";
+      level.textContent = tutorial.level;
+
+      top.appendChild(software);
+      top.appendChild(level);
+
+      const title = document.createElement("h2");
+      title.textContent = tutorial.title;
+
+      const description = document.createElement("p");
+      description.textContent = tutorial.description;
+
+      const keywords = document.createElement("div");
+      keywords.className = "keywords";
+
+      tutorial.keywords.forEach((keywordText) => {
+        const keyword = document.createElement("span");
+        keyword.className = "keyword";
+        keyword.textContent = keywordText;
+        keywords.appendChild(keyword);
+      });
+
+      const footer = document.createElement("div");
+      footer.className = "card-footer";
+
+      const metadata = document.createElement("span");
+      metadata.className = "metadata";
+      metadata.textContent = `${tutorial.duration} · Mis à jour le ${formatDate(tutorial.date)}`;
+
+      const link = document.createElement("a");
+      link.className = "tutorial-link";
+      link.href = tutorial.link;
+      link.target = "_blank";
+      link.rel = "noopener noreferrer";
+      link.textContent = "Voir le tutoriel";
+
+      footer.appendChild(metadata);
+      footer.appendChild(link);
+
+      card.appendChild(top);
+      card.appendChild(title);
+      card.appendChild(description);
+      card.appendChild(keywords);
+      card.appendChild(footer);
+
+      return card;
+    }
+
+    function renderTutorials() {
+      const searchTerm = searchInput.value.trim();
+
+      const filteredTutorials = tutorials.filter((tutorial) => {
+        return matchesFilter(tutorial) && matchesSearch(tutorial, searchTerm);
+      });
+
+      grid.innerHTML = "";
+
+      if (filteredTutorials.length === 0) {
+        const emptyMessage = document.createElement("div");
+        emptyMessage.className = "empty";
+        emptyMessage.textContent = "Aucun tutoriel ne correspond à votre recherche.";
+        grid.appendChild(emptyMessage);
+      } else {
+        filteredTutorials.forEach((tutorial) => {
+          grid.appendChild(createCard(tutorial));
+        });
+      }
+
+      const count = filteredTutorials.length;
+      summary.textContent = `${count} tutoriel${count > 1 ? "s" : ""} affiché${count > 1 ? "s" : ""} sur ${tutorials.length}.`;
+    }
+
+    filterButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        filterButtons.forEach((item) => item.classList.remove("active"));
+        button.classList.add("active");
+        activeFilter = button.dataset.filter;
+        renderTutorials();
+      });
+    });
+
+    searchInput.addEventListener("input", renderTutorials);
+
+    renderTutorials();
+  </script>
+</body>
+</html>
