@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Site de tutoriels bureautiques pour les élèves">
   <title>Tutoriels bureautiques</title>
-
   <style>
     :root {
       --primary: #2563eb;
@@ -16,15 +15,12 @@
       --text: #1e293b;
       --muted: #64748b;
       --border: #dbe3ef;
-      --success: #166534;
       --shadow: 0 8px 24px rgba(15, 23, 42, 0.08);
       --radius: 14px;
     }
-
     * {
       box-sizing: border-box;
     }
-
     body {
       margin: 0;
       font-family: Arial, Helvetica, sans-serif;
@@ -32,35 +28,29 @@
       background: var(--background);
       line-height: 1.5;
     }
-
     a {
       color: var(--primary);
     }
-
     .container {
       width: min(1180px, calc(100% - 32px));
       margin: 0 auto;
     }
-
     header {
       padding: 56px 0 42px;
       color: #ffffff;
       background: linear-gradient(135deg, #1d4ed8, #2563eb 55%, #60a5fa);
     }
-
     header h1 {
       margin: 0 0 12px;
       font-size: clamp(2rem, 5vw, 3.5rem);
       line-height: 1.1;
     }
-
     header p {
       max-width: 720px;
       margin: 0;
       font-size: 1.1rem;
       opacity: 0.95;
     }
-
     .controls {
       display: grid;
       gap: 18px;
@@ -71,11 +61,9 @@
       border-radius: var(--radius);
       box-shadow: var(--shadow);
     }
-
     .search-label {
       font-weight: 700;
     }
-
     #search {
       width: 100%;
       margin-top: 8px;
@@ -86,18 +74,15 @@
       color: var(--text);
       background: #ffffff;
     }
-
     #search:focus {
       outline: 3px solid rgba(37, 99, 235, 0.2);
       border-color: var(--primary);
     }
-
     .filters {
       display: flex;
       flex-wrap: wrap;
       gap: 10px;
     }
-
     .filter-button {
       padding: 10px 15px;
       border: 1px solid var(--border);
@@ -109,32 +94,27 @@
       cursor: pointer;
       transition: 0.2s ease;
     }
-
     .filter-button:hover,
     .filter-button:focus {
       border-color: var(--primary);
       color: var(--primary-dark);
     }
-
     .filter-button.active {
       border-color: var(--primary);
       color: #ffffff;
       background: var(--primary);
     }
-
     .summary {
       margin: 0;
       color: var(--muted);
       font-weight: 700;
     }
-
     .tutorial-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 20px;
       padding-bottom: 48px;
     }
-
     .tutorial-card {
       display: flex;
       flex-direction: column;
@@ -145,7 +125,6 @@
       border-radius: var(--radius);
       box-shadow: var(--shadow);
     }
-
     .card-top {
       display: flex;
       align-items: center;
@@ -153,7 +132,6 @@
       gap: 12px;
       margin-bottom: 15px;
     }
-
     .software {
       display: inline-block;
       padding: 5px 10px;
@@ -163,31 +141,26 @@
       font-size: 0.85rem;
       font-weight: 700;
     }
-
     .level {
       color: var(--muted);
       font-size: 0.85rem;
       font-weight: 700;
     }
-
     .tutorial-card h2 {
       margin: 0 0 12px;
       font-size: 1.25rem;
       line-height: 1.25;
     }
-
     .tutorial-card p {
       margin: 0 0 16px;
       color: var(--muted);
     }
-
     .keywords {
       display: flex;
       flex-wrap: wrap;
       gap: 6px;
       margin-bottom: 18px;
     }
-
     .keyword {
       padding: 4px 8px;
       border-radius: 6px;
@@ -195,7 +168,6 @@
       background: #f1f5f9;
       font-size: 0.78rem;
     }
-
     .card-footer {
       display: flex;
       align-items: center;
@@ -205,12 +177,10 @@
       padding-top: 16px;
       border-top: 1px solid var(--border);
     }
-
     .metadata {
       color: var(--muted);
       font-size: 0.85rem;
     }
-
     .tutorial-link {
       display: inline-block;
       padding: 9px 12px;
@@ -220,12 +190,10 @@
       font-weight: 700;
       text-decoration: none;
     }
-
     .tutorial-link:hover,
     .tutorial-link:focus {
       background: var(--primary-dark);
     }
-
     .empty {
       grid-column: 1 / -1;
       padding: 40px 20px;
@@ -235,32 +203,26 @@
       text-align: center;
       background: var(--surface);
     }
-
     footer {
       padding: 24px 0 36px;
       color: var(--muted);
       text-align: center;
       font-size: 0.9rem;
     }
-
     @media (max-width: 600px) {
       .container {
         width: min(100% - 22px, 1180px);
       }
-
       header {
         padding: 40px 0 32px;
       }
-
       .controls {
         padding: 16px;
       }
-
       .card-footer {
         align-items: flex-start;
         flex-direction: column;
       }
-
       .tutorial-link {
         width: 100%;
         text-align: center;
@@ -268,76 +230,42 @@
     }
   </style>
 </head>
-
 <body>
   <header>
     <div class="container">
       <h1>Tutoriels bureautiques</h1>
-      <p>
-        Retrouvez rapidement des ressources pour progresser dans l'utilisation
-        des outils bureautiques.
-      </p>
+      <p>Retrouvez rapidement des ressources pour progresser dans l'utilisation des outils bureautiques.</p>
     </div>
   </header>
-
   <main class="container">
     <section class="controls" aria-label="Recherche et filtres">
       <label class="search-label" for="search">
         Rechercher un tutoriel
-        <input
-          id="search"
-          type="search"
-          placeholder="Exemple : tableau, image, PDF..."
-          autocomplete="off"
-        >
+        <input id="search" type="search" placeholder="Exemple : tableau, image, PDF..." autocomplete="off">
       </label>
-
       <div class="filters" aria-label="Filtres">
-        <button class="filter-button active" type="button" data-filter="all">
-          Tous
-        </button>
-        <button class="filter-button" type="button" data-filter="Word">
-          Word
-        </button>
-        <button class="filter-button" type="button" data-filter="Excel">
-          Excel
-        </button>
-        <button class="filter-button" type="button" data-filter="Débutant">
-          Débutant
-        </button>
-        <button class="filter-button" type="button" data-filter="Intermédiaire">
-          Intermédiaire
-        </button>
-        <button class="filter-button" type="button" data-filter="Avancé">
-          Avancé
-        </button>
+        <button class="filter-button active" type="button" data-filter="all">Tous</button>
+        <button class="filter-button" type="button" data-filter="Word">Word</button>
+        <button class="filter-button" type="button" data-filter="Excel">Excel</button>
+        <button class="filter-button" type="button" data-filter="Débutant">Débutant</button>
+        <button class="filter-button" type="button" data-filter="Intermédiaire">Intermédiaire</button>
+        <button class="filter-button" type="button" data-filter="Avancé">Avancé</button>
       </div>
-
       <p id="summary" class="summary" aria-live="polite"></p>
     </section>
-
-    <section
-      id="tutorial-grid"
-      class="tutorial-grid"
-      aria-live="polite"
-      aria-label="Liste des tutoriels"
-    ></section>
+    <section id="tutorial-grid" class="tutorial-grid" aria-live="polite" aria-label="Liste des tutoriels"></section>
   </main>
-
   <footer>
-    <div class="container">
-      Site de tutoriels en lecture seule.
-    </div>
+    <div class="container">Site de tutoriels en lecture seule.</div>
   </footer>
-
   <script>
-    const tutorials = [
+    var tutorials = [
       {
         id: 1,
         title: "Sauts de page et sauts de section dans Word",
         software: "Word",
         keywords: ["saut de page", "saut de section", "mise en page", "pagination", "séparation de document"],
-        link: "https://sainteclaireverviers-my.sharepoint.com/:v:/g/personal/beckers_cecile_sec_iscv_be/IQCiYizdbG_CQp9D1_uaJfFZASyj_TFQXvQf_5lJiBhLVHs?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=x05vbC",
+        link: "https://exemple.com/tutoriel-word-01",
         duration: "À compléter",
         description: "Insérez des sauts de page et de section afin d'organiser la structure et la mise en page d'un document.",
         level: "Intermédiaire",
@@ -348,7 +276,7 @@
         title: "Insérer une page de garde dans Word",
         software: "Word",
         keywords: ["page de garde", "couverture", "première page", "modèle", "présentation", "document"],
-        link: "https://sainteclaireverviers-my.sharepoint.com/:v:/g/personal/beckers_cecile_sec_iscv_be/IQDWeqR4a-ivSLe8q20N1Rl_AaweDEQQyRnRSb11x3k27L0?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=aMKXMp",
+        link: "https://exemple.com/tutoriel-word-02",
         duration: "À compléter",
         description: "Ajoutez une page de garde professionnelle à un document Word à partir d'un modèle ou d'une mise en page personnalisée.",
         level: "Débutant",
@@ -359,7 +287,7 @@
         title: "Insérer et mettre en forme un tableau dans Word",
         software: "Word",
         keywords: ["tableau", "lignes", "colonnes", "cellules", "insertion", "bordures", "mise en forme"],
-        link: "https://sainteclaireverviers-my.sharepoint.com/:v:/g/personal/beckers_cecile_sec_iscv_be/IQC0u98mQIfbTYYAz9Dw7OmHAeVNY6eXLFNPDyt2kcFsOZs?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=5VY8Rx",
+        link: "https://exemple.com/tutoriel-word-03",
         duration: "À compléter",
         description: "Insérez un tableau dans Word et modifiez sa structure, ses cellules et sa présentation.",
         level: "Débutant",
@@ -370,7 +298,7 @@
         title: "Insérer et modifier une icône dans Word",
         software: "Word",
         keywords: ["icône", "pictogramme", "insertion", "personnalisation", "couleur", "taille", "objets"],
-        link: "https://sainteclaireverviers-my.sharepoint.com/:v:/g/personal/beckers_cecile_sec_iscv_be/IQBvs1UjA7iZQp81OYtNkDgWAZgWzwTYjPW1WVajIZyHJX0?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=62yZ17",
+        link: "https://exemple.com/tutoriel-word-04",
         duration: "À compléter",
         description: "Insérez une icône dans Word et personnalisez son apparence, sa taille et ses couleurs.",
         level: "Intermédiaire",
@@ -378,10 +306,10 @@
       },
       {
         id: 5,
-        title: "Transformer un texte en colonnes dans Word",
+        title: "Insérer des colonnes dans Word",
         software: "Word",
         keywords: ["colonnes", "mise en page", "texte en colonnes", "journal", "espacement", "section"],
-        link: "https://sainteclaireverviers-my.sharepoint.com/:v:/g/personal/beckers_cecile_sec_iscv_be/IQA4BnmxktZCQrHVOy70uXleAWTP0oSAt32yCAEOPMl9KkA?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=3vhcam",
+        link: "https://exemple.com/tutoriel-word-05",
         duration: "À compléter",
         description: "Organisez le texte en plusieurs colonnes et ajustez leur disposition dans un document Word.",
         level: "Intermédiaire",
@@ -392,7 +320,7 @@
         title: "Ajouter des bordures et des trames dans Word",
         software: "Word",
         keywords: ["bordures", "trame de fond", "paragraphe", "tableau", "encadrement", "couleur", "mise en forme"],
-        link: "https://sainteclaireverviers-my.sharepoint.com/:v:/g/personal/beckers_cecile_sec_iscv_be/IQAhQ4omS3bFR7fUOMAsIjmhAYgJRryS1J4_95_lK2CcCxg?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=4LxYp3",
+        link: "https://exemple.com/tutoriel-word-06",
         duration: "À compléter",
         description: "Ajoutez des bordures et des trames pour mettre en valeur des paragraphes ou des tableaux.",
         level: "Intermédiaire",
@@ -403,7 +331,7 @@
         title: "Utiliser les styles de titre dans Word",
         software: "Word",
         keywords: ["styles", "titre", "titres hiérarchisés", "niveau de titre", "navigation", "table des matières"],
-        link: "https://sainteclaireverviers-my.sharepoint.com/:v:/g/personal/beckers_cecile_sec_iscv_be/IQDTh_v1AcJKQJkn0WNBWtD7AVNCUJ2sSGCo8UKa_wQMY1c?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=Haehhg",
+        link: "https://exemple.com/tutoriel-word-07",
         duration: "À compléter",
         description: "Appliquez des styles de titre pour structurer un document et faciliter sa navigation.",
         level: "Intermédiaire",
@@ -414,7 +342,7 @@
         title: "Insérer un pied de page avec plusieurs informations",
         software: "Word",
         keywords: ["pied de page", "informations", "numéro de page", "texte", "date", "en-tête", "mise en page"],
-        link: "https://sainteclaireverviers-my.sharepoint.com/:v:/g/personal/beckers_cecile_sec_iscv_be/IQCsmZk15j_9Spqmc2mR5lp0Adbnn1ExNCbwpoC2TnQH3M0?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=k5Qemf",
+        link: "https://exemple.com/tutoriel-word-08",
         duration: "À compléter",
         description: "Créez un pied de page contenant plusieurs informations, comme un texte, une date et un numéro de page.",
         level: "Intermédiaire",
@@ -425,7 +353,7 @@
         title: "Insérer une numérotation simple des pages dans Word",
         software: "Word",
         keywords: ["numérotation des pages", "numéro de page", "pagination", "pied de page", "en-tête", "document"],
-        link: "https://sainteclaireverviers-my.sharepoint.com/:v:/g/personal/beckers_cecile_sec_iscv_be/IQA_KTAUhHT6SI2GQLXW9CKEAckaK0YnrNKG0MgfUh6cFMo?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=nycTmL",
+        link: "https://exemple.com/tutoriel-word-09",
         duration: "À compléter",
         description: "Ajoutez une numérotation simple aux pages d'un document Word et choisissez son emplacement.",
         level: "Débutant",
@@ -436,7 +364,7 @@
         title: "Créer des listes à puces et des listes numérotées dans Word",
         software: "Word",
         keywords: ["liste à puces", "liste numérotée", "numérotation", "paragraphes", "hiérarchie", "présentation"],
-        link: https://sainteclaireverviers-my.sharepoint.com/:v:/g/personal/beckers_cecile_sec_iscv_be/IQCCCMxzUoRcSpmPX-9WSmP1AbvRf5KxjTZWmST_g-_ZQWI?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=aHHYuV"",
+        link: "https://exemple.com/tutoriel-word-10",
         duration: "À compléter",
         description: "Créez et personnalisez des listes à puces ou numérotées pour organiser clairement vos informations.",
         level: "Débutant",
@@ -447,7 +375,7 @@
         title: "Utiliser la coupure de mots et aligner le texte dans Word",
         software: "Word",
         keywords: ["coupure de mots", "césure", "alignement", "justification", "paragraphe", "texte", "mise en forme"],
-        link: "https://sainteclaireverviers-my.sharepoint.com/:v:/g/personal/beckers_cecile_sec_iscv_be/IQD_eGGP1BNqSLSc1dKyQQjRAQCVYOSYnbdLRYKDuvsbMVo?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=C3xscE",
+        link: "https://exemple.com/tutoriel-word-11",
         duration: "À compléter",
         description: "Activez la coupure de mots et choisissez l'alignement adapté à la présentation de votre texte.",
         level: "Débutant",
@@ -458,7 +386,7 @@
         title: "Insérer et mettre en forme une image dans Word",
         software: "Word",
         keywords: ["image", "insertion", "illustration", "habillage du texte", "positionnement", "redimensionnement"],
-        link: "https://sainteclaireverviers-my.sharepoint.com/:v:/g/personal/beckers_cecile_sec_iscv_be/IQBiLzTjl9YBQpwLFfv0bBABAYfTF7wUJb6SNPhm9cIEiH8?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=58fuHH",
+        link: "https://exemple.com/tutoriel-word-12",
         duration: "À compléter",
         description: "Insérez une image dans Word et ajustez sa taille, sa position et son habillage avec le texte.",
         level: "Débutant",
@@ -469,157 +397,116 @@
         title: "Modifier les marges dans Word",
         software: "Word",
         keywords: ["marges", "mise en page", "bordures de page", "orientation", "espace", "document"],
-        link: "https://sainteclaireverviers-my.sharepoint.com/:v:/g/personal/beckers_cecile_sec_iscv_be/IQC5vsUbg_UJRIN5Xo4PRQGHAd6PjM2wQzWSZqg-a4n5QTU?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=Pl0L3m",
+        link: "https://exemple.com/tutoriel-word-13",
         duration: "À compléter",
         description: "Modifiez les marges d'un document pour adapter l'espace disponible autour du texte.",
         level: "Débutant",
         date: "2026-08-30"
       }
     ];
-
-    const grid = document.getElementById("tutorial-grid");
-    const searchInput = document.getElementById("search");
-    const summary = document.getElementById("summary");
-    const filterButtons = document.querySelectorAll(".filter-button");
-
-    let activeFilter = "all";
-
+    var grid = document.getElementById("tutorial-grid");
+    var searchInput = document.getElementById("search");
+    var summary = document.getElementById("summary");
+    var filterButtons = document.querySelectorAll(".filter-button");
+    var activeFilter = "all";
     function normalize(value) {
-      return value
-        .toLocaleLowerCase("fr")
-        .normalize("NFD")
-        .replace(/[\u0300-\u036f]/g, "");
+      return value.toLocaleLowerCase("fr").normalize("NFD").replace(/[\u0300-\u036f]/g, "");
     }
-
     function formatDate(dateString) {
-      const date = new Date(`${dateString}T00:00:00`);
-
-      if (Number.isNaN(date.getTime())) {
+      var date = new Date(dateString + "T00:00:00");
+      if (isNaN(date.getTime())) {
         return dateString;
       }
-
-      return new Intl.DateTimeFormat("fr-FR", {
-        day: "2-digit",
-        month: "2-digit",
-        year: "numeric"
-      }).format(date);
+      return new Intl.DateTimeFormat("fr-FR", {day: "2-digit", month: "2-digit", year: "numeric"}).format(date);
     }
-
     function matchesSearch(tutorial, searchTerm) {
-      const searchableContent = [
-        tutorial.title,
-        tutorial.software,
-        tutorial.description,
-        tutorial.level,
-        tutorial.keywords.join(" ")
-      ].join(" ");
-
-      return normalize(searchableContent).includes(normalize(searchTerm));
+      var searchableContent = [tutorial.title, tutorial.software, tutorial.description, tutorial.level, tutorial.keywords.join(" ")].join(" ");
+      return normalize(searchableContent).indexOf(normalize(searchTerm)) !== -1;
     }
-
     function matchesFilter(tutorial) {
       if (activeFilter === "all") {
         return true;
       }
-
       return tutorial.software === activeFilter || tutorial.level === activeFilter;
     }
-
     function createCard(tutorial) {
-      const card = document.createElement("article");
+      var card = document.createElement("article");
       card.className = "tutorial-card";
-
-      const top = document.createElement("div");
+      var top = document.createElement("div");
       top.className = "card-top";
-
-      const software = document.createElement("span");
+      var software = document.createElement("span");
       software.className = "software";
       software.textContent = tutorial.software;
-
-      const level = document.createElement("span");
+      var level = document.createElement("span");
       level.className = "level";
       level.textContent = tutorial.level;
-
       top.appendChild(software);
       top.appendChild(level);
-
-      const title = document.createElement("h2");
+      var title = document.createElement("h2");
       title.textContent = tutorial.title;
-
-      const description = document.createElement("p");
+      var description = document.createElement("p");
       description.textContent = tutorial.description;
-
-      const keywords = document.createElement("div");
+      var keywords = document.createElement("div");
       keywords.className = "keywords";
-
-      tutorial.keywords.forEach((keywordText) => {
-        const keyword = document.createElement("span");
+      for (var i = 0; i < tutorial.keywords.length; i++) {
+        var keyword = document.createElement("span");
         keyword.className = "keyword";
-        keyword.textContent = keywordText;
+        keyword.textContent = tutorial.keywords[i];
         keywords.appendChild(keyword);
-      });
-
-      const footer = document.createElement("div");
+      }
+      var footer = document.createElement("div");
       footer.className = "card-footer";
-
-      const metadata = document.createElement("span");
+      var metadata = document.createElement("span");
       metadata.className = "metadata";
-      metadata.textContent = `${tutorial.duration} · Mis à jour le ${formatDate(tutorial.date)}`;
-
-      const link = document.createElement("a");
+      metadata.textContent = tutorial.duration + " · Mis à jour le " + formatDate(tutorial.date);
+      var link = document.createElement("a");
       link.className = "tutorial-link";
       link.href = tutorial.link;
       link.target = "_blank";
       link.rel = "noopener noreferrer";
       link.textContent = "Voir le tutoriel";
-
       footer.appendChild(metadata);
       footer.appendChild(link);
-
       card.appendChild(top);
       card.appendChild(title);
       card.appendChild(description);
       card.appendChild(keywords);
       card.appendChild(footer);
-
       return card;
     }
-
     function renderTutorials() {
-      const searchTerm = searchInput.value.trim();
-
-      const filteredTutorials = tutorials.filter((tutorial) => {
-        return matchesFilter(tutorial) && matchesSearch(tutorial, searchTerm);
-      });
-
+      var searchTerm = searchInput.value.trim();
+      var filteredTutorials = [];
+      for (var i = 0; i < tutorials.length; i++) {
+        if (matchesFilter(tutorials[i]) && matchesSearch(tutorials[i], searchTerm)) {
+          filteredTutorials.push(tutorials[i]);
+        }
+      }
       grid.innerHTML = "";
-
       if (filteredTutorials.length === 0) {
-        const emptyMessage = document.createElement("div");
+        var emptyMessage = document.createElement("div");
         emptyMessage.className = "empty";
         emptyMessage.textContent = "Aucun tutoriel ne correspond à votre recherche.";
         grid.appendChild(emptyMessage);
       } else {
-        filteredTutorials.forEach((tutorial) => {
-          grid.appendChild(createCard(tutorial));
-        });
+        for (var i = 0; i < filteredTutorials.length; i++) {
+          grid.appendChild(createCard(filteredTutorials[i]));
+        }
       }
-
-      const count = filteredTutorials.length;
-      summary.textContent = `${count} tutoriel${count > 1 ? "s" : ""} affiché${count > 1 ? "s" : ""} sur ${tutorials.length}.`;
+      var count = filteredTutorials.length;
+      summary.textContent = count + " tutoriel" + (count > 1 ? "s" : "") + " affiché" + (count > 1 ? "s" : "") + " sur " + tutorials.length + ".";
     }
-
-    filterButtons.forEach((button) => {
-      button.addEventListener("click", () => {
-        filterButtons.forEach((item) => item.classList.remove("active"));
-        button.classList.add("active");
-        activeFilter = button.dataset.filter;
+    for (var i = 0; i < filterButtons.length; i++) {
+      filterButtons[i].addEventListener("click", function() {
+        for (var j = 0; j < filterButtons.length; j++) {
+          filterButtons[j].classList.remove("active");
+        }
+        this.classList.add("active");
+        activeFilter = this.getAttribute("data-filter");
         renderTutorials();
       });
-    });
-
+    }
     searchInput.addEventListener("input", renderTutorials);
-
     renderTutorials();
   </script>
 </body>
