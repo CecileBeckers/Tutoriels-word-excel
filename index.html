@@ -181,18 +181,24 @@
       color: var(--muted);
       font-size: 0.85rem;
     }
-    .tutorial-link {
-      display: inline-block;
-      padding: 9px 12px;
-      border-radius: 8px;
-      color: #ffffff;
-      background: var(--primary);
-      font-weight: 700;
-      text-decoration: none;
-    }
-    .tutorial-link:hover,
+      .tutorial-link:hover,
     .tutorial-link:focus {
       background: var(--primary-dark);
+    }
+    .card-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .tutorial-link-secondary {
+      color: var(--primary-dark);
+      background: #ffffff;
+      border: 1px solid var(--primary);
+    }
+    .tutorial-link-secondary:hover,
+    .tutorial-link-secondary:focus {
+      color: var(--primary-dark);
+      background: var(--secondary);
     }
     .empty {
       grid-column: 1 / -1;
@@ -539,27 +545,30 @@
         date: "2026-11-14"
            },
       {
-      id: 26,
-        title: "Excel-Insérer un graphique",
+      {
+        id: 26,
+        title: "Excel - Insérer un graphique",
         software: "Excel",
-        keywords: ["graphique"],
-        link: "https://sainteclaireverviers-my.sharepoint.com/:v:/g/personal/beckers_cecile_sec_iscv_be/IQAtCzK64gYsTYpOY7HWnsHwAZZTwYlWttLyjIwqEJsUC8A?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=bxGUva","https://sainteclaireverviers-my.sharepoint.com/:u:/g/personal/beckers_cecile_sec_iscv_be/IQAa74ZzrXRbSL_DCMJnoU3wAd1wRINKfIyO3KYvVcjV0fM?e=uHxlYi"
+        keywords: ["graphique", "diagramme", "histogramme", "courbe", "secteur", "données", "insérer", "éléments", "titre", "légende", "débutant"],
+        link: "https://sainteclaireverviers-my.sharepoint.com/:v:/g/personal/beckers_cecile_sec_iscv_be/IQAtCzK64gYsTYpOY7HWnsHwAZZTwYlWttLyjIwqEJsUC8A?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=bHrPjZ",
         duration: "À compléter",
-        description: "Excel:Insérer un graphique et ajouter des éléments",
+        description: "Excel : insérer un graphique et ajouter des éléments.",
         level: "Débutant",
         date: "2026-11-14"
-         },
+      },
       {
-      id: 27,
-        title: "Excel-Utiliser des formules NB, NBVAL, NB.SI, NB.SI.ENS, SOMME, SOMME.SI, SOMME.SI.ENS, &, CONCATENER, CONCAT, Liste",
+        id: 27,
+        title: "Excel - Utiliser des formules de comptage, de somme et de concaténation",
         software: "Excel",
-        keywords: ["formules"],
+        keywords: ["formules", "NB", "NBVAL", "NB.SI", "NB.SI.ENS", "SOMME", "SOMME.SI", "SOMME.SI.ENS", "CONCATENER", "CONCAT", "&", "liste", "comptage", "somme", "intermédiaire"],
         link: "https://sainteclaireverviers-my.sharepoint.com/:u:/g/personal/beckers_cecile_sec_iscv_be/IQAa74ZzrXRbSL_DCMJnoU3wAd1wRINKfIyO3KYvVcjV0fM?e=CERv8W",
+        link2: "COLLEZ-ICI-LE-DEUXIEME-LIEN",
+        link2Label: "Fichier d'exercice",
         duration: "À compléter",
-        description: "Excel:Utiliser les formules NB, NBVAL, NB.SI, NB.SI.ENS, SOMME, SOMME.SI, SOMME.SI.ENS, &, CONCATENER, CONCAT, Liste",
+        description: "Excel : utiliser les formules NB, NBVAL, NB.SI, NB.SI.ENS, SOMME, SOMME.SI, SOMME.SI.ENS, &, CONCATENER, CONCAT et Liste.",
         level: "Intermédiaire",
         date: "2026-11-14"
-         }
+      }
     ];
     var grid = document.getElementById("tutorial-grid");
     var searchInput = document.getElementById("search");
@@ -622,8 +631,20 @@
       link.target = "_blank";
       link.rel = "noopener noreferrer";
       link.textContent = "Voir le tutoriel";
+           var actions = document.createElement("div");
+      actions.className = "card-actions";
+      actions.appendChild(link);
+      if (tutorial.link2) {
+        var link2 = document.createElement("a");
+        link2.className = "tutorial-link tutorial-link-secondary";
+        link2.href = tutorial.link2;
+        link2.target = "_blank";
+        link2.rel = "noopener noreferrer";
+        link2.textContent = tutorial.link2Label || "Document";
+        actions.appendChild(link2);
+      }
       footer.appendChild(metadata);
-      footer.appendChild(link);
+      footer.appendChild(actions);
       card.appendChild(top);
       card.appendChild(title);
       card.appendChild(description);
